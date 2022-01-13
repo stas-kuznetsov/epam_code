@@ -1,0 +1,17 @@
+---
+- hosts: all
+become: true
+
+vars:
+container_image: "staskuznetsov/petclinic:latest"
+
+- name: Pull Docker image PetClinic
+docker_image:
+name: "{{ container_image }}"
+source: pull
+
+- name: Create container
+docker_container:
+name: "{{ container_image }}"
+image: "{{ container_ }}"
+state: present
