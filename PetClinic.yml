@@ -1,17 +1,15 @@
 ---
 - hosts: all
-become: true
+  become: true
+  tasks:
+#    - name: Pull Docker Image
+#      docker_image:
+#        name: "staskuznetsov/petclinic"
+#        source: pull
+    - name: Create container
+      docker_container:
+        name: "staskuznetsov/petclinic"
+        image: "staskuznetsov/petclinic:latest"
+        ports:
+          - 8080:8080
 
-vars:
-container_image: "staskuznetsov/petclinic"
-
-- name: Pull Docker image PetClinic
-docker_image:
-name: "{{ container_image }}"
-source: pull
-
-- name: Create container
-docker_container:
-name: "{{ container_image }}"
-image: "{{ container_image }}"
-state: present
