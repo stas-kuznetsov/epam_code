@@ -3,7 +3,7 @@
 become: true
 
 vars:
-container_image: "staskuznetsov/petclinic:latest"
+container_image: "staskuznetsov/petclinic"
 
 - name: Pull Docker image PetClinic
 docker_image:
@@ -13,5 +13,5 @@ source: pull
 - name: Create container
 docker_container:
 name: "{{ container_image }}"
-image: "{{ container_ }}"
+image: "{{ container_image }}"
 state: present
